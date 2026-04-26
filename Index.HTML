@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Media & Marketing Digital | Portfólio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #080808;
+    --white: #f0e9d6;
+    --accent: #c9a84c;
+    --accent2: #f0d080;
+    --accent-deep: #8b6914;
+    --gray: #111111;
+    --mid: #252018;
+    --text-muted: #7a7060;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    width: 12px; height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.3s ease;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    mix-blend-mode: difference;
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.15em;
+    color: var(--white);
+  }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-family: 'Space Mono', monospace;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 8rem 3rem 6rem;
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(160deg, transparent 60%, rgba(201,168,76,0.04) 100%);
+  }
+  .hero-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--accent);
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5rem, 10vw, 9rem);
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+  }
+  .hero-title span { color: var(--accent); }
+  .hero-desc {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(245,242,236,0.6);
+    max-width: 400px;
+    margin-bottom: 3rem;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    color: var(--accent2);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+  }
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: gridMove 20s linear infinite;
+  }
+  @keyframes gridMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 60px 60px; }
+  }
+  .hero-marquee-vert {
+    position: absolute;
+    right: 4rem;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    animation: scrollDown 15s linear infinite;
+    opacity: 0.08;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem;
+    writing-mode: vertical-rl;
+    white-space: nowrap;
+    color: var(--white);
+  }
+  @keyframes scrollDown {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+  }
+  .hero-badge {
+    position: absolute;
+    bottom: 4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px; height: 120px;
+    border: 1px solid rgba(255,60,0,0.3);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: rotateBadge 20s linear infinite;
+  }
+  .hero-badge-inner {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    line-height: 1.5;
+    color: var(--accent);
+  }
+  @keyframes rotateBadge {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(360deg); }
+  }
+  .scroll-hint {
+    position: absolute;
+    bottom: 3rem;
+    left: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: var(--text-muted);
+    position: relative;
+    overflow: hidden;
+  }
+  .scroll-line::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: var(--accent);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+  @keyframes scrollLine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  /* SECTION BASE */
+  section { padding: 8rem 3rem; }
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .section-label::after {
+    content: '';
+    display: block;
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  /* SKILLS */
+  .skills-section {
+    background: var(--gray);
+    border-top: 1px solid var(--mid);
+    border-bottom: 1px solid var(--mid);
+  }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--mid);
+    margin-top: 4rem;
+  }
+  .skill-card {
+    background: var(--gray);
+    padding: 2.5rem 2rem;
+    transition: background 0.3s;
+  }
+  .skill-card:hover { background: #222; }
+  .skill-icon {
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+  }
+  .skill-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.7rem;
+  }
+  .skill-desc {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* CLIENTS / PROJECTS */
+  .projects-section { padding: 8rem 0; }
+  .projects-header {
+    padding: 0 3rem 5rem;
+  }
+  .project-item {
+    border-top: 1px solid var(--mid);
+    position: relative;
+    overflow: hidden;
+  }
+  .project-item:last-child { border-bottom: 1px solid var(--mid); }
+  .project-trigger {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 80px 1fr auto 200px;
+    align-items: center;
+    padding: 2.5rem 3rem;
+    background: none;
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.3s;
+    gap: 2rem;
+  }
+  .project-trigger:hover { background: rgba(255,255,255,0.02); }
+  .project-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+  }
+  .project-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .project-trigger:hover .project-name { color: var(--accent2); }
+  .project-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.8rem;
+    border: 1px solid var(--mid);
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+  .project-arrow {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    transition: transform 0.3s, color 0.3s;
+  }
+  .project-item.open .project-arrow {
+    transform: rotate(45deg);
+    color: var(--accent);
+  }
+  .project-body {
+    display: none;
+    padding: 0 3rem 4rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    animation: fadeIn 0.4s ease;
+  }
+  .project-item.open .project-body { display: grid; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .project-info p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: rgba(245,242,236,0.7);
+    margin-bottom: 1.5rem;
+  }
+  .project-results {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+  }
+  .result-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1rem;
+    background: rgba(201,168,76,0.06);
+    border-left: 2px solid var(--accent);
+  }
+  .result-item .r-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    color: var(--accent2);
+    line-height: 1;
+  }
+  .result-item .r-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .project-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .behance-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--mid);
+    color: var(--white);
+    text-decoration: none;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    background: rgba(255,255,255,0.02);
+  }
+  .behance-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(201,168,76,0.06);
+  }
+  .behance-link .link-icon { font-size: 1.2rem; }
+  .project-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+  }
+  .gallery-placeholder {
+    background: var(--mid);
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    text-align: center;
+    padding: 1rem;
+    line-height: 1.5;
+    border: 1px dashed #333;
+  }
+
+  /* MARQUEE */
+  .marquee-section {
+    overflow: hidden;
+    border-top: 1px solid var(--mid);
+    border-bottom: 1px solid var(--mid);
+    padding: 1.5rem 0;
+    background: linear-gradient(135deg, #1a1400 0%, #0d0d00 50%, #1a1400 100%);
+    border-top: 1px solid var(--accent-deep);
+    border-bottom: 1px solid var(--accent-deep);
+  }
+  .marquee-track {
+    display: flex;
+    gap: 3rem;
+    animation: marqueeLeft 20s linear infinite;
+    white-space: nowrap;
+  }
+  @keyframes marqueeLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .marquee-item {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+  .marquee-item::after {
+    content: '✦';
+    font-size: 0.8rem;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: #0d0b00;
+    color: var(--white);
+    text-align: center;
+    padding: 10rem 3rem;
+    border-top: 1px solid var(--accent-deep);
+  }
+  .contact-section .section-title { color: var(--white); }
+  .contact-section .section-label { color: var(--accent); }
+  .contact-section .section-label::after { background: var(--accent); }
+  .contact-cta {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 1;
+    color: var(--white);
+    margin: 2rem 0 3rem;
+  }
+  .contact-cta span { color: var(--accent); }
+  .contact-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 500px;
+    margin: 0 auto 4rem;
+    line-height: 1.7;
+  }
+  .contact-btn {
+    display: inline-block;
+    padding: 1.2rem 3.5rem;
+    background: var(--accent);
+    color: var(--black);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: 2px solid var(--accent);
+    font-weight: 700;
+  }
+  .contact-btn:hover {
+    background: transparent;
+    color: var(--accent);
+  }
+  .contact-grid {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 2rem 3rem;
+    border-top: 1px solid var(--mid);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    section { padding: 5rem 1.5rem; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .project-trigger { grid-template-columns: 60px 1fr 30px; }
+    .project-tags { display: none; }
+    .project-body { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav>
+  <div class="nav-logo">SM Portfolio</div>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#projetos">Projetos</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Social Media & Marketing Digital</div>
+    <h1 class="hero-title">
+      8 Anos.<br>
+      <span>Resultados</span><br>
+      Reais.
+    </h1>
+    <p class="hero-desc">
+      Estratégias que vendem. Conteúdo que engaja. Dados que decidem.
+      Do B2B ao e-commerce, do orgânico ao tráfego pago — resultados acima da média.
+    </p>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">900+</div>
+        <div class="stat-label">Leads Qualificados</div>
+      </div>
+      <div>
+        <div class="stat-num">7+</div>
+        <div class="stat-label">Trabalhos Prestados</div>
+      </div>
+      <div>
+        <div class="stat-num">15%</div>
+        <div class="stat-label">Conv. Média</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-marquee-vert">
+      SOCIAL MEDIA · TRÁFEGO PAGO · BRANDING · DESIGN · CONVERSÃO · LEADS · ROI · B2B · ECOMMERCE ·
+      SOCIAL MEDIA · TRÁFEGO PAGO · BRANDING · DESIGN · CONVERSÃO · LEADS · ROI · B2B · ECOMMERCE ·
+    </div>
+    <div class="hero-badge">
+      <div class="hero-badge-inner">8 anos<br>de<br>experiência</div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item">Social Media</div>
+    <div class="marquee-item">Tráfego Pago</div>
+    <div class="marquee-item">Identidade Visual</div>
+    <div class="marquee-item">Marketing B2B</div>
+    <div class="marquee-item">Edição de Vídeo</div>
+    <div class="marquee-item">Motion Graphics</div>
+    <div class="marquee-item">Marketplaces</div>
+    <div class="marquee-item">E-commerce</div>
+    <div class="marquee-item">Social Media</div>
+    <div class="marquee-item">Tráfego Pago</div>
+    <div class="marquee-item">Identidade Visual</div>
+    <div class="marquee-item">Marketing B2B</div>
+    <div class="marquee-item">Edição de Vídeo</div>
+    <div class="marquee-item">Motion Graphics</div>
+    <div class="marquee-item">Marketplaces</div>
+    <div class="marquee-item">E-commerce</div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section class="skills-section" id="sobre">
+  <div class="section-label">Competências</div>
+  <h2 class="section-title">O que eu<br>entrego</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">📱</div>
+      <div class="skill-name">Social Media</div>
+      <div class="skill-desc">Gestão completa de redes sociais, calendário editorial, criação de conteúdo orgânico e estratégia de engajamento.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🎯</div>
+      <div class="skill-name">Tráfego Pago</div>
+      <div class="skill-desc">Gestão de campanhas Meta Ads e Google Ads com otimização de ROI, CPA e geração de leads qualificados.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🎨</div>
+      <div class="skill-name">Design & Branding</div>
+      <div class="skill-desc">Identidade visual, banners, artes para redes sociais, Adobe Photoshop, Illustrator e After Effects.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🎬</div>
+      <div class="skill-name">Vídeo & Motion</div>
+      <div class="skill-desc">Edição profissional com Premiere Pro e After Effects, podcasts, boletins, animações e motion graphics.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📊</div>
+      <div class="skill-name">Análise & Dados</div>
+      <div class="skill-desc">Relatórios de performance, otimização de marketplaces, análise de concorrência e tendências de mercado.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🏭</div>
+      <div class="skill-name">Marketing B2B</div>
+      <div class="skill-desc">Estratégias voltadas a indústrias, construtoras, incorporadoras e startups com foco em conversão corporativa.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🛒</div>
+      <div class="skill-name">E-commerce</div>
+      <div class="skill-desc">Gestão de lojas em Mercado Livre, Shopee, Amazon e e-commerce próprio com foco em conversão.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">⚖️</div>
+      <div class="skill-name">Nicho Jurídico</div>
+      <div class="skill-desc">Social media especializado em advocacia empresarial, recuperação judicial e trabalhista com marketing digital.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects-section" id="projetos">
+  <div class="projects-header">
+    <div class="section-label">Experiências</div>
+    <h2 class="section-title">Clientes &<br>Projetos</h2>
+  </div>
+
+  <!-- MOTOBEL -->
+  <div class="project-item" id="proj-motobel">
+    <button class="project-trigger" onclick="toggleProject('proj-motobel')">
+      <div class="project-num">01</div>
+      <div class="project-name">Motobel</div>
+      <div class="project-tags">
+        <span class="tag">Tráfego Pago</span>
+        <span class="tag">Social Media</span>
+        <span class="tag">Automóveis</span>
+      </div>
+      <div class="project-arrow">+</div>
+    </button>
+    <div class="project-body">
+      <div class="project-info">
+        <p>
+          Analista de Marketing responsável pela gestão de tráfego pago e social media de
+          <strong>6 concessionárias simultâneas</strong> nos nichos de automóveis (Honda),
+          motocicletas (Bajaj) e empilhadeiras (Toyota).
+        </p>
+        <p>
+          Responsável por toda a roteirização, calendário editorial e postagens, além da
+          otimização de métricas de ROI e CTA — atingindo resultados expressivos acima
+          da média da região.
+        </p>
+        <div class="project-results">
+          <div class="result-item">
+            <div class="r-num">300</div>
+            <div class="r-label">Leads qualificados Honda<br>na mesma cidade</div>
+          </div>
+          <div class="result-item">
+            <div class="r-num">500</div>
+            <div class="r-label">Leads qualificados Bajaj<br>em 2 estados</div>
+          </div>
+          <div class="result-item">
+            <div class="r-num">100</div>
+            <div class="r-label">Leads qualificados<br>Empilhadeiras Toyota</div>
+          </div>
+          <div class="result-item">
+            <div class="r-num">10–15%</div>
+            <div class="r-label">Taxa de conversão média</div>
+          </div>
+        </div>
+      </div>
+      <div class="project-links">
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1rem;">Ver portfólio completo no Behance:</p>
+        <a href="https://www.behance.net/gallery/234187035/Edicao-de-Video-Grupo-de-Marcas" target="_blank" class="behance-link">
+          <span class="link-icon">𝗕</span> Edição de Vídeo — Grupo de Marcas
+        </a>
+        <a href="https://www.behance.net/gallery/234184723/Designer-Editor-de-video-e-Gestor-de-Trafego" target="_blank" class="behance-link">
+          <span class="link-icon">𝗕</span> Designer, Editor de Vídeo & Gestor de Tráfego
+        </a>
+        <a href="https://www.behance.net/gallery/237008171/Animacoes-Motion" target="_blank" class="behance-link">
+          <span class="link-icon">𝗕</span> Animações & Motion Graphics
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PABLO BUARQUE -->
+  <div class="project-item" id="proj-pablo">
+    <button class="project-trigger" onclick="toggleProject('proj-pablo')">
+      <div class="project-num">02</div>
+      <div class="project-name">Pablo Buarque Advogado</div>
+      <div class="project-tags">
+        <span class="tag">Jurídico</span>
+        <span class="tag">B2B</span>
+        <span class="tag">Tráfego</span>
+      </div>
+      <div class="project-arrow">+</div>
+    </button>
+    <div class="project-body">
+      <div class="project-info">
+        <p>
+          Gestão completa de marketing digital para escritório de advocacia especializado em
+          <strong>Recuperação Judicial e Trabalhista</strong>, com foco em empresas em
+          dificuldade financeira.
+        </p>
+        <p>
+          Atuação como social media, editor de vídeo, gestor de tráfego e designer — cobrindo
+          todas as frentes do marketing digital com estratégia B2B focada em empresas.
+        </p>
+      </div>
+      <div class="project-links">
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1rem;">Ver portfólio completo no Behance:</p>
+        <a href="https://www.behance.net/gallery/245961145/Social-Midia-Escritorio-de-Advocacia" target="_blank" class="behance-link">
+          <span class="link-icon">𝗕</span> Social Mídia — Escritório de Advocacia
+        </a>
+        <a href="https://www.behance.net/gallery/247179863/Producao-e-Edicao-de-Videos-Social-Midia-Advocacia" target="_blank" class="behance-link">
+          <span class="link-icon">𝗕</span> Produção & Edição de Vídeos — Advocacia
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- XMACHINA -->
+  <div class="project-item" id="proj-xmachina">
+    <button class="project-trigger" onclick="toggleProject('proj-xmachina')">
+      <div class="project-num">03</div>
+      <div class="project-name">XMachina IA</div>
+      <div class="project-tags">
+        <span class="tag">Startup</span>
+        <span class="tag">B2B</span>
+        <span class="tag">Tecnologia</span>
+      </div>
+      <div class="project-arrow">+</div>
+    </button>
+    <div class="project-body">
+      <div class="project-info">
+        <p>
+          Marketing para startup de <strong>inteligência artificial disruptiva</strong> com foco em
+          conversão B2B para indústrias de grande e pequeno porte.
+        </p>
+        <p>
+          Gerenciamento completo e criação de vídeos e banners para redes sociais, além
+          de participação em eventos e negociações B2B.
+        </p>
+      </div>
+      <div class="project-links">
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1rem;">Ver portfólio completo no Behance:</p>
+        <a href="https://www.behance.net/gallery/141175425/Social-Media-Startup-XMachina" target="_blank" class="behance-link">
+          <span class="link-icon">𝗕</span> Social Media — Startup XMachina
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- JORNAL NOTPICAS -->
+  <div class="project-item" id="proj-jornal">
+    <button class="project-trigger" onclick="toggleProject('proj-jornal')">
+      <div class="project-num">04</div>
+      <div class="project-name">Jornal Notpicas Agrícolas</div>
+      <div class="project-tags">
+        <span class="tag">Jornalismo</span>
+        <span class="tag">Vídeo</span>
+        <span class="tag">Podcast</span>
+      </div>
+      <div class="project-arrow">+</div>
+    </button>
+    <div class="project-body">
+      <div class="project-info">
+        <p>
+          Atuação por <strong>4 meses como PJ</strong> dentro da redação do Jornal Notpicas
+          Agrícolas, com responsabilidades de identidade visual, edição de vídeo em formato
+          de boletins, gravação e edição de podcasts.
+        </p>
+        <p>
+          Ferramentas utilizadas: <strong>Adobe Photoshop, Adobe Premiere Pro e After Effects</strong>
+          para produção de novas introduções e peças gráficas.
+        </p>
+      </div>
+      <div class="project-links">
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1rem;">Ver portfólio completo no Behance:</p>
+        <a href="https://www.behance.net/gallery/234187035/Edicao-de-Video-Grupo-de-Marcas" target="_blank" class="behance-link">
+          <span class="link-icon">𝗕</span> Edição de Vídeo — Grupo de Marcas
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHOP UD -->
+  <div class="project-item" id="proj-shopud">
+    <button class="project-trigger" onclick="toggleProject('proj-shopud')">
+      <div class="project-num">05</div>
+      <div class="project-name">Shop Ud</div>
+      <div class="project-tags">
+        <span class="tag">E-commerce</span>
+        <span class="tag">Marketplace</span>
+        <span class="tag">Orgânico</span>
+      </div>
+      <div class="project-arrow">+</div>
+    </button>
+    <div class="project-body">
+      <div class="project-info">
+        <p>
+          Implementação de estratégias de marketing para e-commerce e marketplaces de
+          <strong>utilidades domésticas</strong>, além de gestão de redes sociais no formato orgânico.
+        </p>
+        <p>
+          Criação de artes, campanhas promocionais (Compre 1 Leve 2, descontos de até 70%),
+          posts de produto e materiais de divulgação da loja física e virtual.
+        </p>
+      </div>
+      <div class="project-gallery">
+        <div class="gallery-placeholder">🛍️<br>Organizador<br>de Gaveta</div>
+        <div class="gallery-placeholder">🎉<br>Compre 1<br>Leve 2</div>
+        <div class="gallery-placeholder">🛒<br>Até 70%<br>Desconto</div>
+        <div class="gallery-placeholder">🎋<br>Bambu<br>Fibras Naturais</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALAR -->
+  <div class="project-item" id="proj-alar">
+    <button class="project-trigger" onclick="toggleProject('proj-alar')">
+      <div class="project-num">06</div>
+      <div class="project-name">Alar Construtora</div>
+      <div class="project-tags">
+        <span class="tag">B2B</span>
+        <span class="tag">Construção</span>
+        <span class="tag">Site</span>
+      </div>
+      <div class="project-arrow">+</div>
+    </button>
+    <div class="project-body">
+      <div class="project-info">
+        <p>
+          Elaboração completa de <strong>identidade visual, site e estratégia digital</strong> para
+          construtora e fornecedora de serviços terceirizados para condomínios e empresas.
+        </p>
+        <p>
+          Estratégia de abordagem focada em <strong>parcerias com incorporadoras e engenharias</strong>
+          de todos os portes — foco total em B2B.
+        </p>
+      </div>
+      <div class="project-gallery">
+        <div class="gallery-placeholder">🏗️<br>Identidade<br>Visual</div>
+        <div class="gallery-placeholder">🌐<br>Site<br>Institucional</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HAMBÚRGUERIA -->
+  <div class="project-item" id="proj-hamburguer">
+    <button class="project-trigger" onclick="toggleProject('proj-hamburguer')">
+      <div class="project-num">07</div>
+      <div class="project-name">Hambúrgueria</div>
+      <div class="project-tags">
+        <span class="tag">Food</span>
+        <span class="tag">Local</span>
+        <span class="tag">iFood</span>
+      </div>
+      <div class="project-arrow">+</div>
+    </button>
+    <div class="project-body">
+      <div class="project-info">
+        <p>
+          Desenvolvimento completo de <strong>identidade visual, social media e marketing digital</strong>
+          com foco em conversão de leads regionais.
+        </p>
+        <p>
+          Estratégia de migração de clientes de plataformas como <strong>iFood para cliente direto</strong>,
+          aumentando a margem de lucro do negócio.
+        </p>
+      </div>
+      <div class="project-gallery">
+        <div class="gallery-placeholder">🍔<br>Identidade<br>Visual</div>
+        <div class="gallery-placeholder">📱<br>Social<br>Media</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CASA DAS CAPAS -->
+  <div class="project-item" id="proj-casacapas">
+    <button class="project-trigger" onclick="toggleProject('proj-casacapas')">
+      <div class="project-num">08</div>
+      <div class="project-name">Casa das Capas</div>
+      <div class="project-tags">
+        <span class="tag">Marketplace</span>
+        <span class="tag">Analítico</span>
+        <span class="tag">Casa & Enxoval</span>
+      </div>
+      <div class="project-arrow">+</div>
+    </button>
+    <div class="project-body">
+      <div class="project-info">
+        <p>
+          Analista de Marketing com foco em <strong>tendências de mercado no nicho de casa e enxoval</strong>,
+          otimização de marketplaces e conversão.
+        </p>
+        <p>
+          Os marketplaces concentravam <strong>60% da operação</strong> — atuação completamente
+          analítica com foco em dados, performance e conversão.
+        </p>
+      </div>
+      <div class="project-gallery">
+        <div class="gallery-placeholder">📊<br>Análise de<br>Marketplaces</div>
+        <div class="gallery-placeholder">🏠<br>Casa &<br>Enxoval</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- MARQUEE 2 -->
+<div class="marquee-section" style="background: var(--gray); border-color: var(--mid);">
+  <div class="marquee-track" style="animation-direction: reverse;">
+    <div class="marquee-item" style="color: var(--accent);">Adobe Premiere Pro</div>
+    <div class="marquee-item" style="color: var(--accent);">After Effects</div>
+    <div class="marquee-item" style="color: var(--accent);">Photoshop</div>
+    <div class="marquee-item" style="color: var(--accent);">Meta Ads</div>
+    <div class="marquee-item" style="color: var(--accent);">Google Ads</div>
+    <div class="marquee-item" style="color: var(--accent);">Canva Pro</div>
+    <div class="marquee-item" style="color: var(--accent);">Illustrator</div>
+    <div class="marquee-item" style="color: var(--accent);">Motion Graphics</div>
+    <div class="marquee-item" style="color: var(--accent);">Adobe Premiere Pro</div>
+    <div class="marquee-item" style="color: var(--accent);">After Effects</div>
+    <div class="marquee-item" style="color: var(--accent);">Photoshop</div>
+    <div class="marquee-item" style="color: var(--accent);">Meta Ads</div>
+    <div class="marquee-item" style="color: var(--accent);">Google Ads</div>
+    <div class="marquee-item" style="color: var(--accent);">Canva Pro</div>
+    <div class="marquee-item" style="color: var(--accent);">Illustrator</div>
+    <div class="marquee-item" style="color: var(--accent);">Motion Graphics</div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contato">
+  <div class="section-label" style="justify-content:center;">Vamos trabalhar juntos</div>
+  <div class="contact-cta">
+    Pronto para<br>
+    <span>crescer?</span>
+  </div>
+  <p class="contact-desc">
+    Se você precisa de um profissional que entende de estratégia, executa com qualidade
+    e entrega resultado — vamos conversar.
+  </p>
+  <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+    <a href="mailto:seuemail@email.com" class="contact-btn">📩 Enviar mensagem</a>
+    <a href="https://www.behance.net" target="_blank" class="contact-btn" style="background:transparent; color:var(--accent); border-color:var(--accent);">𝗕 Ver Behance</a>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 — Portfólio Social Media</div>
+  <div>8 anos · 7+ clientes · 900+ leads gerados</div>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    cursor.style.left = mouseX - 6 + 'px';
+    cursor.style.top = mouseY - 6 + 'px';
+  });
+  function animateRing() {
+    ringX += (mouseX - ringX - 18) * 0.12;
+    ringY += (mouseY - ringY - 18) * 0.12;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  // Accordion
+  function toggleProject(id) {
+    const item = document.getElementById(id);
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.project-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.skill-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
